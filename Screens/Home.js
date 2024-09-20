@@ -1,11 +1,12 @@
 import React, { Component, useEffect } from "react";
-import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { useNavigation } from "@react-navigation/native"
 
 export default function Home() {
+    const navigation = useNavigation();
     const [fontsLoaded] = useFonts({
         "Poppins": require("../assets/fonts/Poppins-Bold.ttf")
     })
@@ -32,19 +33,21 @@ export default function Home() {
         >
             <Image
                 source={require('../assets/LogoApp.png')}
-                style={{ width: 250, height: 250, alignContent: "center", marginTop: 150}}
+                style={{ width: 250, height: 250, alignContent: "center", marginTop: 150 }}
             />
             <Text style={styles.txt1}>Descubre tus proximos</Text>
             <Text style={styles.txt2}>lugares favoritos aqui.</Text>
             <Text style={styles.txt3}>Explora todos los productos que existan</Text>
             <Text style={styles.txt4}>basados en tu interes y que necesites ahora.</Text>
-            <TouchableOpacity style={styles.button1}>
+            <TouchableOpacity
+                style={styles.button1}
+                onPress={() => navigation.navigate("Register")}>
                 <Text style={styles.txt5}>Vamos</Text>
             </TouchableOpacity>
             <TouchableOpacity>
                 <Text style={styles.txt7}>¿Todavia no tienes cuenta? Entra aca</Text>
             </TouchableOpacity>
-            
+
         </LinearGradient>
     )
 
@@ -77,10 +80,10 @@ const styles = StyleSheet.create({
         color: "#a5d6d1",
         fontSize: 18,
     },
-    txt6:{
+    txt6: {
         fontFamily: "Poppins",
     },
-    txt7:{
+    txt7: {
         fontFamily: "Poppins",
         color: "white",
         marginTop: 10,

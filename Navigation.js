@@ -9,49 +9,59 @@ import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 import HomeScreen from "./Screens/HomeScreen";
 import Settings from "./Screens/Settings";
-import StackScreen from "./Screens/StackScreen";
+import Register from "./Screens/Register";
 import Home from "./Screens/Home";
 
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs(){
-    return(
+function MyTabs() {
+    return (
         <Tab.Navigator
             initialRouteName="Home"
             screenOptions={{
                 tabBarActiveTintColor: 'purple',
             }}
         >
-            <Tab.Screen 
-                name="Home" 
+            <Tab.Screen
+                name="Home"
                 component={Home}
                 options={{
                     headerShown: false,
-                    tabBarStyle: {display: "none"}
+                    tabBarStyle: { display: "none" },
+                    tabBarButton: () => null,
                 }}
             />
-            <Tab.Screen 
-                name="HomeScreen" 
+            <Tab.Screen
+                name="Register"
+                component={Register}
+                options={{
+                    headerShown: false,
+                    tabBarStyle: { display: "none" },
+                    tabBarButton: () => null,
+                }}
+            />
+            <Tab.Screen
+                name="HomeScreen"
                 component={HomeScreen}
                 options={{
                     headerShown: false,
                     tabBarBadge: 1,
                     tabBarLabel: 'Feed',
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesomeIcon icon={faHome} color="purple" size={25}/>
+                        <FontAwesomeIcon icon={faHome} color="purple" size={25} />
                     ),
                 }}
             />
-            <Tab.Screen 
-                name="Settings" 
+            <Tab.Screen
+                name="Settings"
                 component={Settings}
                 options={{
                     headerShown: false,
                     tabBarBadge: 2,
                     tabBarLabel: 'Ajustes',
-                    tabBarIcon: ({ color, size}) => (
-                        <FontAwesomeIcon icon={faGear} color="purple" size={25}/>
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesomeIcon icon={faGear} color="purple" size={25} />
                     ),
                 }}
             />
@@ -60,9 +70,9 @@ function MyTabs(){
 }
 
 export default function Navigation() {
-    return(
+    return (
         <NavigationContainer>
-            <MyTabs/>
+            <MyTabs />
         </NavigationContainer>
     )
 }
